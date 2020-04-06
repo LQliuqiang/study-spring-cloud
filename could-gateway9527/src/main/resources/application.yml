@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: could-gateway-service
+  cloud:
+    consul:
+      host: 192.168.224.129
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启从注册中心动态创建路由的功能，利用微服务名称进行路由
+      routes:
+        - id: payment_routh1  #路由id，没有固定的规则但要求唯一，建议配合服务名
+          #uri: http://localhost:8001 #路由地址
+          uri: lb://could-provider-consul-payment-service #需要discovery.locator.enabled进行开启
+          predicates:
+            - Path=/provider/getPayment/** #断言，路径相匹配的进行路由
+
+        - id: payment_routh2  #路由id，没有固定的规则但要求唯一，建议配合服务名
+          #uri: http://localhost:8001 #路由地址
+          uri: lb://could-provider-consul-payment-service #需要discovery.locator.enabled进行开启
+          predicates:
+            - Path=/provider/getPaymentTimeout/** #断言，路径相匹配的进行路由
+
+
+server:
+  port: 9527

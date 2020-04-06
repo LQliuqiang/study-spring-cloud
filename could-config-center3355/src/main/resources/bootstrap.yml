@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: could-config-client-service
+  cloud:
+    consul:
+      host: 192.168.224.129
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+    config:
+      label: master #指定读取分支
+      name: config #配置文件名称
+      profile: dev #读取后缀名称  上述3个综合，读取master分支上config-dev.yml的配置文件被读取 http://localhost:3344/master/config-dev.yml
+      uri: http://localhost:3344 #配置中心地址
+  rabbitmq:
+    host: 192.168.224.129
+    port: 5672
+    username: guest
+    password: guest
+
+server:
+  port: 3355
+
+#暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: could-consumer-consul-order-service
+  cloud:
+    consul:
+      host: 192.168.224.129
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+
+ribbon:
+#  设置链接超时时间 ribbon默认链接超时是1秒，此处设置为5秒
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+
+
+server:
+  port: 80
+
+#开启feign与hystrix的结合使用
+feign:
+  hystrix:
+    enabled: true
