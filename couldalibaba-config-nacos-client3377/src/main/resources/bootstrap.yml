@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: could-config-nacos-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.224.129:8848
+      config:
+        file-extension: yaml #指定yaml格式的配置
+        server-addr: 192.168.224.129:8848
+        #上面是采用默认的dataId来切换环境，默认的namespace是public，默认的group是DEFAULT_GROUP
+#        namespace: xxx-ss-yy-xx #采用命名空间切换配置文件环境
+#        group: TEST_GROUP  #采用分组切换配置文件环境,
+#        group: DEV_GROUP
+
+
+
+server:
+  port: 3377
+
+#在配置中心配置的dataId值的公式 ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
+#用当前工程实例dataId的值就是 could-config-nacos-service-dev.yaml

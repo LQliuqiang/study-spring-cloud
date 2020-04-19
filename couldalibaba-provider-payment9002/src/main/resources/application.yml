@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: could-provider-nacos-payment-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.224.129:8848
+
+
+server:
+  port: 9002
+
+#监控对外暴露所有接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

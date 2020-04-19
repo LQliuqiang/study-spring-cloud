@@ -1,0 +1,31 @@
+server:
+  port: 8802
+
+spring:
+  application:
+    name: could-stream-rabbitmq-consumer-service
+  cloud:
+    consul:
+      host: 192.168.224.129
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment: #配置rabbimq连接环境
+            spring:
+              rabbitmq:
+                host: 192.168.224.129
+                port: 5672
+                username: guest
+                password: guest
+      bindings:
+#        output:
+#          destination: StudySpringCloudExchange  #exchange名称，交换模式默认是topic
+#          content-type: application/json
+        input:
+          destination: StudySpringCloudExchange
+          content-type: application/json
+          group: myGroup  #将8802与8803放置在同一组，防止8802与8803重复消费，与消息持久化

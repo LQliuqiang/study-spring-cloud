@@ -31,6 +31,13 @@
         <module>could-config-center3344</module>
         <module>could-config-center3355</module>
         <module>could-config-center3366</module>
+        <module>could-stream-rabbitmq-provider8801</module>
+        <module>could-stream-rabbitmq-consumer8802</module>
+        <module>could-stream-rabbitmq-consumer8803</module>
+        <module>couldalibaba-provider-payment9001</module>
+        <module>couldalibaba-provider-payment9002</module>
+        <module>couldalibaba-consumer-nacos-order83</module>
+        <module>couldalibaba-config-nacos-client3377</module>
     </modules>
 
 
@@ -58,6 +65,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>Hoxton.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.1.0.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
