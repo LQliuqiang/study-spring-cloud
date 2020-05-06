@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: could-sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.224.129:8848
+    sentinel:
+      transport:
+#        配置sentinel的dashboard地址
+        dashboard: 127.0.0.1:8080
+#        默认端口8719，假如被占用，会自动从8719依次+1，直到找到未被调用的端口
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 192.168.224.129:8848
+            dataId: ${spring.application.name}
+            groupId: DEFAULT_GROUP
+            date-type: json
+            rule-type: flow
+
+
+server:
+  port: 8401
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# 激活sentinel对feign的支持
+feign:
+  sentinel:
+    enabled: true

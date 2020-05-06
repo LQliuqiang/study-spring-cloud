@@ -38,6 +38,7 @@
         <module>couldalibaba-provider-payment9002</module>
         <module>couldalibaba-consumer-nacos-order83</module>
         <module>couldalibaba-config-nacos-client3377</module>
+        <module>couldalibaba-sentinel-service8401</module>
     </modules>
 
 
